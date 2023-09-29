@@ -16,7 +16,7 @@ Our dataset is a comprehensive collection of histopathologic images extracted fr
 
 ### Dataset Information
 
-The dataset used in this project is known as PatchCamelyon (PCam), and it is hosted in the [official PCam GitHub repository](https://github.com/basveeling/pcam). PCam is a valuable resource for machine learning tasks related to image classification, particularly in the field of histopathology.
+The dataset used in this project is known as PatchCamelyon (PCam), and it is hosted in the [official PCam GitHub repository](https://github.com/basveeling/pcam). PCam is a valuable resource for machine learning tasks related to image classification, particularly in the field of histopathology. As you may have observed, due to the substantial size of the dataset, it wasn't feasible to upload it directly to GitHub. To retrieve and download the dataset, kindly refer to the 'Download' section available in the official PCam GitHub repository.
 
 ### Overview
 
@@ -67,7 +67,31 @@ We normalized the pixel values of the images in the dataset to a range of [0.0, 
 Our project includes a detailed analysis of the model's performance on both validation and testing datasets. It's essential to highlight some key findings:
 
 The model exhibits commendable overall accuracy on the testing dataset, demonstrating its ability to make correct predictions.
-Precision and recall metrics vary between the two classes ("Normal" and "Metastasis"), indicating a trade-off between minimizing false positives and false negatives.
+Precision and recall metrics vary between the two classes ("Normal" and "Metastasis"), indicating a trade-off between minimizing false positives and false negatives. The metrics of the model can be observed below:
+
+![metrics](https://github.com/ramses02/Metastasis_Diagnosis/blob/main/Images/metrics.png)
+
+Upon evaluating our best model on the testing dataset, we observed an overall accuracy of 74%. While this accuracy score demonstrates the model's ability to make correct predictions on the test data, a deeper analysis reveals some nuances in its performance across different classes.
+
+The model exhibited a precision of 77% for the "Normal" class, indicating that when it predicted an image as "Normal," it was accurate in doing so 77% of the time. This suggests a reasonable ability to classify "Normal" samples correctly. However, the recall for the "Normal" class was 68%, indicating that out of all the actual "Normal" images, 32% were mistakenly classified as "Metastasis."
+
+Conversely, for the "Metastasis" class, the model demonstrated a recall of 80%, highlighting its proficiency in detecting actual "Metastasis" cases. This means that the model correctly identified 80% of the true "Metastasis" cases in the dataset. However, the precision for the "Metastasis" class was 72%, implying that when it predicted "Metastasis," it was correct 72% of the time.
+
+The calculated F1-scores were 0.72 and 0.75 for the "Normal" and "Metastasis" classes, respectively. These scores indicate a trade-off between precision and recall values for both classes, emphasizing the need to strike a balance between minimizing false positives and false negatives.
+
+It's noteworthy that this model exhibited superior performance on the validation dataset compared to the testing data. Several factors could contribute to this discrepancy: (1) Distributional differences between the validation and testing datasets, where the test data may contain patterns or edge cases not well-represented in the training and validation datasets. (2) Size disparities, where even a few misclassifications in a smaller test dataset can significantly impact performance metrics. (3) The inherent randomness in neural networks, from weight initialization to training dynamics, can lead to varied outcomes, especially in limited dataset scenarios. Additional information on this topic can be found [here](https://stackoverflow.com/questions/60475162/why-is-my-neural-network-validation-accuracy-higher-than-my-training-accuracy-an).
+
+In light of these considerations, the model's commendable validation performance juxtaposed with slightly diminished test results underscores the importance of iterative refinement. Ensuring consistent performance across diverse datasets is crucial for establishing the model's clinical trustworthiness. 
+
+![conf matrix](https://github.com/ramses02/Metastasis_Diagnosis/blob/main/Images/conf_matrix.png)
+
+Based on the confusion matrix, the model exhibits a strong performance in classifying cases in a binary classification task. Out of a total of 32,768 cases, the model correctly identified 13,022 cases as belonging to one class ("Positive") and accurately recognized 11,202 cases as belonging to the other class ("Negative"). These correct classifications represent the True Positives and True Negatives, respectively.
+
+However, it's worth noting that no model is without its imperfections. In this case, the model had a tendency to make some misclassifications. Specifically, it incorrectly classified 5,189 cases as belonging to the "Positive" class when they actually belonged to the "Negative" class, constituting the False Positives. Additionally, the model misjudged 3,355 actual "Positive" cases as "Negative," resulting in False Negatives.
+
+Despite these misclassifications, the model demonstrates commendable overall accuracy, reflecting its ability to make correct predictions for a significant portion of the dataset. Furthermore, the model exhibits a high precision, indicating that when it predicts a case as "Positive," it is often reliable in its diagnosis. Additionally, the solid recall score signifies that the model is adept at identifying a substantial proportion of the actual "Positive" cases, highlighting its ability to effectively detect cases of interest.
+
+In summary, this diagnostic tool, as indicated by the confusion matrix, showcases robust classification capabilities, with impressive accuracy, precision, and recall metrics, all of which are vital in medical applications, where the accurate identification of positive cases is of paramount importance for patient well-being.
 
 ## Conclusions and Recommendations
 
