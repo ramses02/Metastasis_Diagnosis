@@ -127,3 +127,10 @@ Establishing a robust feedback mechanism where clinicians and pathologists can p
 
 We hope that this project serves as a valuable resource for advancing AI-driven cancer diagnosis and contributes to improving patient outcomes through early and accurate detection. Please feel free to explore the code, documentation, and findings provided in this repository.
 
+
+## Repository Structure
+
+- `Images/`: Contains the images of the metrics of the model.
+- `Auxilliary_Notebook.ipynb/`: Contains the auxilliary notebook and the initial models and searches for hyperparameters.
+- `Notebook.ipynb/`: Contains the main notebook and the main, comprehensive corpus of code.
+- `README.md/`: Contains information about how to navigate this project.
