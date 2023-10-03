@@ -84,7 +84,7 @@ It's noteworthy that this model exhibited superior performance on the validation
 
 In light of these considerations, the model's commendable validation performance juxtaposed with slightly diminished test results underscores the importance of iterative refinement. Ensuring consistent performance across diverse datasets is crucial for establishing the model's clinical trustworthiness. 
 
-![conf matrix](https://github.com/ramses02/Metastasis_Diagnosis/blob/main/Images/conf_matrix.png)
+![conf matrix](https://github.com/ramses02/Metastasis_Diagnosis/blob/main/Images/confmatrix.png)
 
 Based on the confusion matrix, the model exhibits a strong performance in classifying cases in a binary classification task. Out of a total of 26,215 cases, the model correctly identified 11,043 cases as belonging to one class ("Positive") and accurately recognized 11,235 cases as belonging to the other class ("Negative"). These correct classifications represent the True Positives and True Negatives, respectively.
 
