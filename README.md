@@ -57,10 +57,11 @@ Please be aware that the utilization of Convolutional Neural Network (CNN) archi
 
 ## Data Preprocessing
 
-In this project, we've taken several important steps in data preprocessing:
+In this project, we have undergone several essential data preprocessing steps after partitioning the provided training data into our custom training, validation, and testing sets:
 
-We prepared the target variables (y_train, y_test, and y_valid) for use in deep learning models by converting them to NumPy arrays, changing their data type to float32, and reshaping them into column vectors.
-We normalized the pixel values of the images in the dataset to a range of [0.0, 1.0] by dividing each pixel value by 255.0. This normalization process is a standard preprocessing step in deep learning tasks, ensuring that the pixel values are within a consistent and manageable range for neural network training.
+1. To prepare the target variables (y_train, y_test, and y_valid) for utilization in deep learning models, we transformed them into NumPy arrays, adjusted their data type to float32, and reshaped them into column vectors.
+
+2. We standardized the pixel values of the images within the dataset to fall within the range of [0.0, 1.0]. This standardization process involved dividing each pixel value by 255.0. This standardization procedure is a fundamental preprocessing operation frequently applied in deep learning endeavors. Its purpose is to ensure that the pixel values remain consistent and manageable for neural network training, ultimately enhancing model performance.
 
 ## Model Performance and Analysis
 
@@ -71,13 +72,13 @@ Precision and recall metrics vary between the two classes ("Normal" and "Metasta
 
 ![metrics](https://github.com/ramses02/Metastasis_Diagnosis/blob/main/Images/metrics.png)
 
-Upon evaluating our best model on the testing dataset, we observed an overall accuracy of 74%. While this accuracy score demonstrates the model's ability to make correct predictions on the test data, a deeper analysis reveals some nuances in its performance across different classes.
+Upon evaluating our best model on the testing dataset, we observed an overall accuracy of 84%. While this accuracy score demonstrates the model's ability to make correct predictions on the test data, a deeper analysis reveals some nuances in its performance across different classes.
 
-The model exhibited a precision of 77% for the "Normal" class, indicating that when it predicted an image as "Normal," it was accurate in doing so 77% of the time. This suggests a reasonable ability to classify "Normal" samples correctly. However, the recall for the "Normal" class was 68%, indicating that out of all the actual "Normal" images, 32% were mistakenly classified as "Metastasis."
+The model exhibited a precision of 84% for the "Normal" class, indicating that when it predicted an image as "Normal," it was accurate in doing so 84% of the time. This suggests a reasonable ability to classify "Normal" samples correctly. However, the recall for the "Normal" class was 84%, indicating that out of all the actual "Normal" images, 16% were mistakenly classified as "Metastasis."
 
-Conversely, for the "Metastasis" class, the model demonstrated a recall of 80%, highlighting its proficiency in detecting actual "Metastasis" cases. This means that the model correctly identified 80% of the true "Metastasis" cases in the dataset. However, the precision for the "Metastasis" class was 72%, implying that when it predicted "Metastasis," it was correct 72% of the time.
+Conversely, for the "Metastasis" class, the model demonstrated a recall of 85%, highlighting its proficiency in detecting actual "Metastasis" cases. This means that the model correctly identified 85% of the true "Metastasis" cases in the dataset. 
 
-The calculated F1-scores were 0.72 and 0.75 for the "Normal" and "Metastasis" classes, respectively. These scores indicate a trade-off between precision and recall values for both classes, emphasizing the need to strike a balance between minimizing false positives and false negatives.
+The calculated F1-scores were 0.84 and 0.84 for the "Normal" and "Metastasis" classes, respectively. These scores indicate a trade-off between precision and recall values for both classes, emphasizing the need to strike a balance between minimizing false positives and false negatives.
 
 It's noteworthy that this model exhibited superior performance on the validation dataset compared to the testing data. Several factors could contribute to this discrepancy: (1) Distributional differences between the validation and testing datasets, where the test data may contain patterns or edge cases not well-represented in the training and validation datasets. (2) Size disparities, where even a few misclassifications in a smaller test dataset can significantly impact performance metrics. (3) The inherent randomness in neural networks, from weight initialization to training dynamics, can lead to varied outcomes, especially in limited dataset scenarios. Additional information on this topic can be found [here](https://stackoverflow.com/questions/60475162/why-is-my-neural-network-validation-accuracy-higher-than-my-training-accuracy-an).
 
@@ -85,9 +86,9 @@ In light of these considerations, the model's commendable validation performance
 
 ![conf matrix](https://github.com/ramses02/Metastasis_Diagnosis/blob/main/Images/conf_matrix.png)
 
-Based on the confusion matrix, the model exhibits a strong performance in classifying cases in a binary classification task. Out of a total of 32,768 cases, the model correctly identified 13,022 cases as belonging to one class ("Positive") and accurately recognized 11,202 cases as belonging to the other class ("Negative"). These correct classifications represent the True Positives and True Negatives, respectively.
+Based on the confusion matrix, the model exhibits a strong performance in classifying cases in a binary classification task. Out of a total of 26,215 cases, the model correctly identified 11,043 cases as belonging to one class ("Positive") and accurately recognized 11,235 cases as belonging to the other class ("Negative"). These correct classifications represent the True Positives and True Negatives, respectively.
 
-However, it's worth noting that no model is without its imperfections. In this case, the model had a tendency to make some misclassifications. Specifically, it incorrectly classified 5,189 cases as belonging to the "Positive" class when they actually belonged to the "Negative" class, constituting the False Positives. Additionally, the model misjudged 3,355 actual "Positive" cases as "Negative," resulting in False Negatives.
+However, it's worth noting that no model is without its imperfections. In this case, the model had a tendency to make some misclassifications. Specifically, it incorrectly classified 2,002 cases as belonging to the "Positive" class when they actually belonged to the "Negative" class, constituting the False Positives. Additionally, the model misjudged 1,935 actual "Positive" cases as "Negative," resulting in False Negatives.
 
 Despite these misclassifications, the model demonstrates commendable overall accuracy, reflecting its ability to make correct predictions for a significant portion of the dataset. Furthermore, the model exhibits a high precision, indicating that when it predicts a case as "Positive," it is often reliable in its diagnosis. Additionally, the solid recall score signifies that the model is adept at identifying a substantial proportion of the actual "Positive" cases, highlighting its ability to effectively detect cases of interest.
 
